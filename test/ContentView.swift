@@ -44,14 +44,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                ForEach(temps.items, id: \.self) { item in
-//                    NavigationLink(destination: SecondView(temps: temps, temp: item)) {
-//                        Text(item.name)
-//                    }
-//                }
-                NavigationLink(destination: SecondView(temps: temps, temp: temps.items[0])) {
-                    Text(temps.items[0].name)
+                ForEach(temps.items, id: \.self) { item in
+                    NavigationLink(destination: SecondView(temps: temps, temp: item)) {
+                        Text(item.name)
+                    }
                 }
+//                NavigationLink(destination: SecondView(temps: temps, temp: temps.items[0])) {
+//                    Text(temps.items[0].name)
+//                }
 //                NavigationLink(destination: SecondView(temps: temps, temp: temps.items[1])) {
 //                    Text(temps.items[1].name)
 //                }
