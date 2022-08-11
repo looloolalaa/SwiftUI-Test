@@ -15,7 +15,6 @@ struct Temp: Hashable {
 class Temps: ObservableObject {
     @Published var items: [Temp] = [
         Temp(name: "first", content: "this is the first content"),
-//        Temp(name: "second", content: "second content")
     ]
     
     func change() {
@@ -25,11 +24,10 @@ class Temps: ObservableObject {
 
 struct SecondView: View {
     @ObservedObject var temps: Temps
-    var temp: Temp
     
     var body: some View {
         VStack {
-            Text(temp.content)
+            Text(temps.items[0].content)
             
             Button("change") {
                 temps.change()
@@ -38,23 +36,17 @@ struct SecondView: View {
     }
 }
 
-struct ContentView: View {
+struct FirstView: View {
     @StateObject var temps = Temps()
     
     var body: some View {
         NavigationView {
             VStack {
-                ForEach(temps.items, id: \.self) { item in
-                    NavigationLink(destination: SecondView(temps: temps, temp: item)) {
-                        Text(item.name)
+                ForEach(temps.items.indices, id: \.self) { index in
+                    NavigationLink(destination: SecondView(temps: temps)) {
+                        Text(temps.items[index].name)
                     }
                 }
-//                NavigationLink(destination: SecondView(temps: temps, temp: temps.items[0])) {
-//                    Text(temps.items[0].name)
-//                }
-//                NavigationLink(destination: SecondView(temps: temps, temp: temps.items[1])) {
-//                    Text(temps.items[1].name)
-//                }
             }
         }
     }
@@ -63,6 +55,6 @@ struct ContentView: View {
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FirstView()
     }
 }
