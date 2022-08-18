@@ -14,6 +14,10 @@ struct TempImage: Identifiable {
 }
 
 struct ContentView: View {
+    @State private var image: Image?
+    @State private var inputImage: UIImage?
+    @State private var showingImagePicker = false
+    
     let tempImages: [TempImage] = {
         let fileManager = FileManager()
         let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -81,23 +85,41 @@ struct ContentView: View {
                 }
             }
             
-            List {
-                ForEach(tempImages) { item in
-                    HStack {
-                        Text(item.name)
-                            .bold()
-                        Divider()
-                        item.image?
-                            .renderingMode(.original)
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                        
-                    }
-                    
-                }
+            
+            Button("gallery") {
+                showingImagePicker.toggle()
             }
+            
+            image?
+                .resizable()
+                .scaledToFit()
+            
+//            List {
+//                ForEach(tempImages) { item in
+//                    HStack {
+//                        Text(item.name)
+//                            .bold()
+//                        Divider()
+//                        item.image?
+//                            .renderingMode(.original)
+//                            .resizable()
+//                            .frame(width: 40, height: 40)
+//
+//                    }
+//                }
+//            }
+        }
+        .onChange(of: inputImage) { _ in loadImage() }
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker(image: $inputImage)
         }
     }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
+    
 }
 
 struct test_Previews: PreviewProvider {
