@@ -7,19 +7,59 @@
 
 import SwiftUI
 
+struct Temp {
+    var title: String
+    var content: String
+    var creationDate: Date
+}
+
 struct ContentView: View {
-    @State private var showing = false
+    @State private var temps: [Temp] = []
+    @State private var text = ""
     
     var body: some View {
         VStack {
-            if showing {
-                Image(systemName: "moon")
-                    .transition(.slide)
+            TextField("name", text: $text)
+                .frame(width: 100)
+            
+            Button("write") {
+                let fileManager = FileManager()
+                let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                let newTextFileURL = documentURL.appendingPathComponent(text)
+                
+                do {
+                    try text.write(to: newTextFileURL, atomically: false, encoding: .utf8)
+                } catch {
+                    print("Error File Write: \(error.localizedDescription)")
+                }
             }
             
-            Button("toggle") {
-                withAnimation {
-                    showing.toggle()
+            Button("read") {
+                let fileManager = FileManager()
+                let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                
+                do {
+                    let allTextFileURLs = try fileManager.contentsOfDirectory(at: documentURL, includingPropertiesForKeys: nil)
+                    
+                    for url in allTextFileURLs {
+                        let title = url.lastPathComponent
+                        let content = try String(contentsOf: url, encoding: .utf8)
+                        let attr = try fileManager.attributesOfItem(atPath: url.path)
+                        let creationDate = attr[FileAttributeKey.creationDate] as! Date
+                        let newTemp = Temp(title: title, content: content, creationDate: creationDate)
+                        temps.append(newTemp)
+                    }
+                    
+                } catch {
+                    print("Error Reading File: \(error.localizedDescription)")
+                }
+                
+                temps.sort { $0.creationDate < $1.creationDate }
+            }
+            
+            Button("print") {
+                for temp in temps {
+                    print("\(temp.title): \(temp.content) (\(temp.creationDate))")
                 }
             }
         }
