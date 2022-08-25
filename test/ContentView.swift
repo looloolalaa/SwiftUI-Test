@@ -44,6 +44,7 @@ struct ContentView: View {
                     for url in allTextFileURLs {
                         let title = url.lastPathComponent
                         let content = try String(contentsOf: url, encoding: .utf8)
+                        
                         let attr = try fileManager.attributesOfItem(atPath: url.path)
                         let creationDate = attr[FileAttributeKey.creationDate] as! Date
                         let newTemp = Temp(title: title, content: content, creationDate: creationDate)
@@ -62,6 +63,37 @@ struct ContentView: View {
                     print("\(temp.title): \(temp.content) (\(temp.creationDate))")
                 }
             }
+            
+            Button("move") {
+                let fileManager = FileManager()
+                let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                
+                let text0URL = documentURL.appendingPathComponent("Text0")
+                let destinationURL = documentURL.appendingPathComponent("dddd")
+                
+                do {
+                    try fileManager.moveItem(at: text0URL, to: destinationURL)
+                } catch {
+                    print("Error File Move: \(error.localizedDescription)")
+                }
+            }
+            
+            Button("all delete") {
+                let fileManager = FileManager()
+                let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                
+                do {
+                
+                    let allFileURLs = try fileManager.contentsOfDirectory(at: documentURL, includingPropertiesForKeys: nil)
+                    for url in allFileURLs {
+                        try fileManager.removeItem(at: url)
+                    }
+                    
+                } catch {
+                    print("Error Delete File: \(error.localizedDescription)")
+                }
+            }
+            .foregroundStyle(.red)
         }
     }
 }
