@@ -7,98 +7,50 @@
 
 import SwiftUI
 
-struct SearchRootView: View {
-    
-    @FocusState var focused: Field? // define here
-
-    var body: some View {
-        NavigationView {
-            NavigationLink {
-                SearchTextFieldPushView(focused: _focused) // pass down here
-            } label: {
-                Text("Search")
-            }
-        }
-    }
-}
-
-enum Field {
-    case name
-}
-
-struct SearchTextFieldPushView: View {
-    
-    @FocusState var focused: Field?
-    
-    @State var username: String = ""
-
+struct SecondView: View {
+    @State private var text = ""
+    @FocusState private var focused: Bool
     
     var body: some View {
         VStack {
-            Button {
-                focused = nil
-            } label: {
-                Text("Remove Focus")
-            }
-            
-            Button("Focus") {
-                focused = .name
-            }
-            
-            if self.focused == nil {
-                Text("No")
+            if focused {
+                Text("Focused!")
             } else {
-                Text("Focus")
+                Text("Not Focused..")
             }
-
+            
+            
+            Button("remove focus") {
+                focused = false
+            }.foregroundStyle(.red)
+            
+            TextField("empty", text: $text)
+                .focused($focused)
+                .border(.secondary)
             
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                TextField("user name", text: $username)
-                    .focused(self.$focused, equals: Field.name)
-                    .disableAutocorrection(true)
-                    .padding(4)
+                TextField("empty", text: $text)
+                    .focused($focused)
                     .border(.secondary)
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct ContentView: View {
-    @FocusState private var titleFieldFocused: Field?
-//    @FocusState private var textFieldFocused: Bool
-    
-    @State private var title = "hello"
-//    @State private var text = "ffff"
-    
     var body: some View {
-        SearchRootView()
-//        VStack {
-//            Text("hi")
-//            if (titleFieldFocused != nil) {
-//                Button("OK") {
-//
-//                }
-//            }
-//            TextField("title", text: $title)
-//                .focused($titleFieldFocused, equals: .name)
-//        }
-//        .navigationBarTitleDisplayMode(.inline)
-//        .toolbar {
-//            ToolbarItem(placement: .principal) {
-//                TextField("title", text: $title)
-//                    .focused($titleFieldFocused, equals: .name)
-//            }
-//        }
+        NavigationView {
+            NavigationLink(destination: SecondView()) {
+                Text("Go")
+            }
+        }
     }
 }
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            ContentView()
-        }
+        ContentView()
     }
 }
