@@ -10,6 +10,7 @@ import SwiftUI
 struct SecondView: View {
     @State private var text = ""
     @FocusState private var focused: Bool
+    @State private var showing = false
     
     var body: some View {
         VStack {
@@ -21,7 +22,7 @@ struct SecondView: View {
             
             
             Button("remove focus") {
-                focused = false
+                showing.toggle()
             }.foregroundStyle(.red)
             
             TextField("empty", text: $text)
@@ -29,8 +30,15 @@ struct SecondView: View {
                 .border(.secondary)
             
         }
+        .alert(isPresented: $showing) {
+            Alert(title: Text("Already"), message: Text("message"), dismissButton: .cancel() {
+                print("cancel")
+                focused = true
+            })
+        }
+    
         .toolbar {
-            ToolbarItem(placement: .principal) {
+            ToolbarItem(placement: .navigationBarLeading) {
                 TextField("empty", text: $text)
                     .focused($focused)
                     .border(.secondary)
