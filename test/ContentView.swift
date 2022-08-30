@@ -7,42 +7,24 @@
 
 import SwiftUI
 
-struct SecondView: View {
-    @State private var text = ""
-    @FocusState private var focused: Bool
-    @State private var showing = false
+struct SampleDetails: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    var btnBack : some View {
+        Button(action: {
+            presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "moon")
+                Text("Go back")
+            }
+        }
+    }
     
     var body: some View {
         VStack {
-            if focused {
-                Text("Focused!")
-            } else {
-                Text("Not Focused..")
-            }
-            
-            
-            Button("remove focus") {
-                showing.toggle()
-            }.foregroundStyle(.red)
-            
-            TextField("empty", text: $text)
-                .focused($focused)
-                .border(.secondary)
-            
-        }
-        .alert(isPresented: $showing) {
-            Alert(title: Text("Already"), message: Text("message"), dismissButton: .cancel() {
-                print("cancel")
-                focused = true
-            })
-        }
-    
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                TextField("empty", text: $text)
-                    .focused($focused)
-                    .border(.secondary)
-            }
+            btnBack
+            Text("sample code")
         }
     }
 }
@@ -50,8 +32,8 @@ struct SecondView: View {
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: SecondView()) {
-                Text("Go")
+            NavigationLink(destination: SampleDetails()) {
+                Text("go")
             }
         }
     }
