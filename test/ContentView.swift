@@ -7,35 +7,18 @@
 
 import SwiftUI
 
-struct SampleDetails: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
-    var btnBack : some View {
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack {
-                Image(systemName: "moon")
-                Text("Go back")
-            }
-        }
-    }
-    
-    var body: some View {
-        VStack {
-            btnBack
-            Text("sample code")
-        }
-    }
-}
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: SampleDetails()) {
-                Text("go")
-            }
-        }
+        Text("Hello, world!")
+            .padding()
+            .background(.red)
+            .padding()
+            .background(.blue)
+            .padding()
+            .background(.green)
+            .padding()
+            .background(.yellow)
     }
 }
 
