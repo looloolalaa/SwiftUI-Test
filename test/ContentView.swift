@@ -7,19 +7,26 @@
 
 import SwiftUI
 
+class Temp {
+    var tof: Bool = false
+}
+
 
 struct ContentView: View {
+    var temp = Temp()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-            .background(.red)
-            .padding()
-            .background(.blue)
-            .padding()
-            .background(.green)
-            .padding()
-            .background(.yellow)
-        
+        VStack {
+            Button("toggle") {
+                temp.tof.toggle()
+            }
+            
+            if temp.tof {
+                Text("true!")
+            } else {
+                Text("false ..")
+            }
+        }
     }
 }
 
