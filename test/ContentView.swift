@@ -7,25 +7,18 @@
 
 import SwiftUI
 
-class Temp {
-    var tof: Bool = false
-}
-
-
 struct ContentView: View {
-    var temp = Temp()
-    
+    @State private var sortBy = "creation"
+    let types = ["name", "creation", "modification"]
     var body: some View {
-        VStack {
-            Button("toggle") {
-                temp.tof.toggle()
+        List {
+            Picker("your pick?", selection: $sortBy) {
+                ForEach(types, id: \.self) { type in
+                    Text(type)
+                }
             }
-            
-            if temp.tof {
-                Text("true!")
-            } else {
-                Text("false ..")
-            }
+            .pickerStyle(.inline)
+            Text(sortBy)
         }
     }
 }
