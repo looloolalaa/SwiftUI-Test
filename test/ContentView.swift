@@ -7,18 +7,26 @@
 
 import SwiftUI
 
+enum SortBy: String, CaseIterable, Identifiable {
+    case name
+    case creation
+    case modification
+    
+    var id: String { self.rawValue }
+}
+
 struct ContentView: View {
-    @State private var sortBy = "creation"
-    let types = ["name", "creation", "modification"]
+    @State private var selected: SortBy = .modification
+    
     var body: some View {
-        List {
-            Picker("your pick?", selection: $sortBy) {
-                ForEach(types, id: \.self) { type in
-                    Text(type)
+        VStack {
+            Picker("you pick?", selection: $selected) {
+                ForEach(SortBy.allCases) { sortBy in
+                    Text(sortBy.rawValue)
+                        .tag(sortBy)
                 }
             }
-            .pickerStyle(.inline)
-            Text(sortBy)
+            Text(selected.rawValue)
         }
     }
 }
