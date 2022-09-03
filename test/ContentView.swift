@@ -7,26 +7,59 @@
 
 import SwiftUI
 
-enum SortBy: String, CaseIterable, Identifiable {
-    case name
-    case creation
-    case modification
-    
-    var id: String { self.rawValue }
+class Memos: ObservableObject {
+    @Published var items: [String] = ["0","4","3"]
+}
+
+struct ThirdView: View {
+    @ObservedObject var memos: Memos
+    var body: some View {
+        VStack {
+            HStack {
+                ForEach(memos.items, id: \.self) { item in
+                    Text(item)
+                }
+            }
+            
+            Button("change") {
+                memos.items[2] = "wow!"
+            }
+        }
+    }
+}
+
+struct SecondView: View {
+    @ObservedObject var memos: Memos
+    var body: some View {
+        NavigationView {
+            VStack {
+                HStack {
+                    ForEach(memos.items, id: \.self) { item in
+                        Text(item)
+                    }
+                }
+                NavigationLink(destination: ThirdView(memos: memos)) {
+                    Text("Go")
+                }
+            }
+        }
+    }
 }
 
 struct ContentView: View {
-    @State private var selected: SortBy = .modification
-    
+    @StateObject var memos: Memos = Memos()
     var body: some View {
-        VStack {
-            Picker("you pick?", selection: $selected) {
-                ForEach(SortBy.allCases) { sortBy in
-                    Text(sortBy.rawValue)
-                        .tag(sortBy)
+        NavigationView {
+            VStack {
+                HStack {
+                    ForEach(memos.items, id: \.self) { item in
+                        Text(item)
+                    }
+                }
+                NavigationLink(destination: SecondView(memos: memos)) {
+                    Text("Go")
                 }
             }
-            Text(selected.rawValue)
         }
     }
 }
