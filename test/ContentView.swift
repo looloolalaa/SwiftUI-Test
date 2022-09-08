@@ -8,25 +8,13 @@
 import SwiftUI
 
 
-
-struct SecondView: View {
-    @State var str: String
-    
-    init(str: String) {
-        _str = State(initialValue: str)
-    }
-    var body: some View {
-        Text(str)
-    }
-}
-
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: SecondView(str: "init")) {
-                Text("Go")
-            }
+            Text("hello")
+                .navigationTitle(Text("what"))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
