@@ -21,7 +21,10 @@ struct ContentView: View {
         self.temp = temp
 //        self.str = temp.items[1]
         do {
+            
             //should be here
+            self.str = "ddd"
+            
             let fileManager = FileManager()
             let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
             let textsURL = documentURL.appendingPathComponent("texts")
@@ -30,7 +33,7 @@ struct ContentView: View {
             try "zz".write(to: textURL, atomically: false, encoding: .utf8)
             
             
-            self.str = "ddd"
+//            self.str = "ddd"
         } catch {
             print("zz: \(error.localizedDescription)")
         }
