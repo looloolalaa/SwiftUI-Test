@@ -7,50 +7,21 @@
 
 import SwiftUI
 
-class Temp: ObservableObject {
-    @Published var items: [String] = ["0", "1", "wow"]
+enum Temp: String {
+    case plus
+    case minusx
 }
 
 
 struct ContentView: View {
-    @ObservedObject var temp: Temp
-    
-    @State private var str: String
-    
-    init(temp: Temp) {
-        self.temp = temp
-//        self.str = temp.items[1]
-        do {
-            
-            //should be here
-            self.str = "ddd"
-            
-            let fileManager = FileManager()
-            let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let textsURL = documentURL.appendingPathComponent("texts")
-            let textURL = textsURL.appendingPathComponent("newFileName")
-
-            try "zz".write(to: textURL, atomically: false, encoding: .utf8)
-            
-            
-//            self.str = "ddd"
-        } catch {
-            print("zz: \(error.localizedDescription)")
-        }
-    }
-    
+    let temp: Temp = Temp(rawValue: "plus")!
     var body: some View {
-        VStack {
-            Text(str)
-            Button("plus") {
-                str += "z"
-            }
-        }
+        Text("hello")
     }
 }
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(temp: Temp())
+        ContentView()
     }
 }
