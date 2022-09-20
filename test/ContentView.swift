@@ -9,12 +9,12 @@ import SwiftUI
 
 enum Temp: String {
     case plus
-    case minusx
+    case minus
 }
 
 
 struct ContentView: View {
-    let temp: Temp = Temp(rawValue: "plus")!
+    let temp: Temp = .minus
     var body: some View {
         Text("hello")
     }
