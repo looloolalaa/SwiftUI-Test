@@ -7,16 +7,28 @@
 
 import SwiftUI
 
-enum Temp: String {
-    case plus
-    case minus
+enum PasswordError: Error {
+    case obvious
 }
 
+func checkPassword(_ password: String) throws -> Bool {
+    if password == "password" {
+        throw PasswordError.obvious
+    }
+    
+    return true
+}
 
 struct ContentView: View {
-    let temp: Temp = .minus
     var body: some View {
-        Text("hello")
+        Button("check") {
+            do {
+                try checkPassword("password")
+                print("Good")
+            } catch {
+                print("Error!")
+            }
+        }
     }
 }
 
