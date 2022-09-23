@@ -7,22 +7,31 @@
 
 import SwiftUI
 
-struct Temp {
-    var a: Int
-    var s: String
+class Temp: ObservableObject {
+    @Published var items: [String] = ["bbc", "add", "c"]
+    
+    func sorting() {
+        withAnimation {
+            items.sort()
+        }
+    }
 }
 
 struct ContentView: View {
-    @State var temp: Temp = Temp(a: 4, s: "hi") {
-        willSet(newTemp) {
-            print("wow! \(temp.s) -> \(newTemp.s)")
-        }
-    }
+    @StateObject var temp = Temp()
     var body: some View {
-        Button("change") {
-            temp = Temp(a: 0, s: "is this right?")
+        VStack {
+            ForEach(temp.items, id: \.self) { item in
+                Text(item)
+            }
+            
+            Button("sorting") {
+                temp.sorting()
+
+            }
         }
     }
+    
 }
 
 struct test_Previews: PreviewProvider {
