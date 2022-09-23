@@ -7,27 +7,20 @@
 
 import SwiftUI
 
-enum PasswordError: Error {
-    case obvious
-}
-
-func checkPassword(_ password: String) throws -> Bool {
-    if password == "password" {
-        throw PasswordError.obvious
-    }
-    
-    return true
+struct Temp {
+    var a: Int
+    var s: String
 }
 
 struct ContentView: View {
+    @State var temp: Temp = Temp(a: 4, s: "hi") {
+        willSet(newTemp) {
+            print("wow! \(temp.s) -> \(newTemp.s)")
+        }
+    }
     var body: some View {
-        Button("check") {
-            do {
-                try checkPassword("password")
-                print("Good")
-            } catch {
-                print("Error!")
-            }
+        Button("change") {
+            temp = Temp(a: 0, s: "is this right?")
         }
     }
 }
