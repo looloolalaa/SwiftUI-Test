@@ -16,8 +16,8 @@ struct SecondView: View {
     @State private var str: String
     
     init(temp: Temp) {
-//        self.str = temp.s
-        self._str = State(initialValue: temp.s)
+        self.str = temp.s
+//        self._str = State(initialValue: temp.s)
     }
     var body: some View {
         Text(str)
