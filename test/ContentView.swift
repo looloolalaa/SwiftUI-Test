@@ -7,27 +7,35 @@
 
 import SwiftUI
 
-class Temp: ObservableObject {
-    @Published var items: [String] = ["bbc", "add", "c"]
+struct Temp {
+    var a: Int
+    var s: String
+}
+
+struct SecondView: View {
+    @State private var str: String
     
-    func sorting() {
-        withAnimation {
-            items.sort()
-        }
+    init(temp: Temp) {
+//        self.str = temp.s
+        self._str = State(initialValue: temp.s)
+    }
+    var body: some View {
+        Text(str)
     }
 }
 
 struct ContentView: View {
-    @StateObject var temp = Temp()
+    @State var temp = Temp(a: 4, s: "whatthe")
     var body: some View {
-        VStack {
-            ForEach(temp.items, id: \.self) { item in
-                Text(item)
-            }
-            
-            Button("sorting") {
-                temp.sorting()
-
+        NavigationView {
+            VStack {
+                NavigationLink(destination: SecondView(temp: temp)){
+                    Text("Link")
+                }
+                
+                Button("change") {
+                    temp.s = "umm ..."
+                }
             }
         }
     }
