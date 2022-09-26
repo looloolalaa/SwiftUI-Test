@@ -7,35 +7,33 @@
 
 import SwiftUI
 
-struct Temp {
-    var a: Int
-    var s: String
+class Temps: ObservableObject {
+    @Published var items: [Temp] = [
+        Temp(s: "aaa"),
+        Temp(s: "Second")
+    ]
 }
 
-struct SecondView: View {
-    @State private var str: String
+struct Temp: Identifiable, Equatable {
+    var id = UUID()
+    var s: String
     
-    init(temp: Temp) {
-        self.str = temp.s
-//        self._str = State(initialValue: temp.s)
-    }
-    var body: some View {
-        Text(str)
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
     }
 }
+
 
 struct ContentView: View {
-    @State var temp = Temp(a: 4, s: "whatthe")
+    @StateObject var temps = Temps()
     var body: some View {
-        NavigationView {
-            VStack {
-                NavigationLink(destination: SecondView(temp: temp)){
-                    Text("Link")
-                }
-                
-                Button("change") {
-                    temp.s = "umm ..."
-                }
+        VStack {
+            ForEach(temps.items) { temp in
+                Text(temp.id.description)
+                Text(temp.s)
+            }
+            Button("change") {
+                temps.items[1].s = "plz"
             }
         }
     }
