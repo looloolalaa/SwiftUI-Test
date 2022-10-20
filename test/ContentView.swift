@@ -8,25 +8,19 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var str = ""
-    @State private var show = false
-    @FocusState private var focus: Bool
-
     var body: some View {
-//        NavigationView {
-            VStack {
-                if show {
-                    TextField("test", text: $str)
-                        .focused($focus)
-                }
-                Button("show & focus") {
-                    show.toggle()
-                    focus.toggle()
-                }
+        HStack {
+            Text("hello")
+            Button("hi") {
+                print("B")
             }
-//        }
+        }
+        .frame(maxWidth: .infinity)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            print("hello")
+        }
     }
-    
 }
 
 struct test_Previews: PreviewProvider {
