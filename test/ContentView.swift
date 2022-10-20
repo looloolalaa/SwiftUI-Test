@@ -3,39 +3,28 @@
 //  iDine
 //
 //  Created by Kihyun Lee on 2022/07/09.
-//
 
 import SwiftUI
 
-class Temps: ObservableObject {
-    @Published var items: [Temp] = [
-        Temp(s: "aaa"),
-        Temp(s: "Second")
-    ]
-}
-
-struct Temp: Identifiable, Equatable {
-    var id = UUID()
-    var s: String
-    
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
 
 struct ContentView: View {
-    @StateObject var temps = Temps()
+    @State private var str = ""
+    @State private var show = false
+    @FocusState private var focus: Bool
+
     var body: some View {
-        VStack {
-            ForEach(temps.items) { temp in
-                Text(temp.id.description)
-                Text(temp.s)
+//        NavigationView {
+            VStack {
+                if show {
+                    TextField("test", text: $str)
+                        .focused($focus)
+                }
+                Button("show & focus") {
+                    show.toggle()
+                    focus.toggle()
+                }
             }
-            Button("change") {
-                temps.items[1].s = "plz"
-            }
-        }
+//        }
     }
     
 }
