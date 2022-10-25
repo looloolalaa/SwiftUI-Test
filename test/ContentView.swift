@@ -8,18 +8,15 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @State var currentDate = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
-        HStack {
-            Text("hello")
-            Button("hi") {
-                print("B")
+        Text("\(currentDate)")
+            .onReceive(timer) { input in
+                currentDate = input
+                print("zz")
             }
-        }
-        .frame(maxWidth: .infinity)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            print("hello")
-        }
     }
 }
 
