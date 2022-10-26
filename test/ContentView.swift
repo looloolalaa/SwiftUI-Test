@@ -6,21 +6,38 @@
 
 import SwiftUI
 
-
-struct ContentView: View {
-    @State var timeRemaining = 10
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+struct SecondeView: View {
+    @Binding var a: Int
+    @Binding var b: Int
+    @State private var i = 0
 
     var body: some View {
-        if timeRemaining > 0 {
-            Text("\(timeRemaining)")
-                .onReceive(timer) { _ in
-                    if timeRemaining > 0 {
-                        timeRemaining -= 1
-                    }
+        Text("change")
+            .onAppear {
+                a = 4
+                while i < 1000000 {
+                    i += 1
                 }
-        } else {
-            Image(systemName: "moon")
+                
+                b = 100
+            }
+    }
+}
+
+
+struct ContentView: View {
+    @State var a = 0
+    @State var b = 1
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: SecondeView(a: $a, b: $b)) {
+                    Text("Link")
+                }
+                
+                Text("\(a) \(b)")
+            }
         }
     }
 }
