@@ -13,14 +13,14 @@ struct SecondeView: View {
 
     var body: some View {
         Text("change")
-            .onAppear {
-                a = 4
-                while i < 1000000 {
-                    i += 1
-                }
-                
-                b = 100
-            }
+            .task(takeTime)
+    }
+    
+    func takeTime() async {
+        while i < 1000000 {
+            i += 1
+        }
+        b = 4
     }
 }
 
