@@ -6,54 +6,54 @@
 
 import SwiftUI
 
-
 struct SecondView: View {
-    // SecondView only executes a given function
-    // Even function that will change FirstView
-    let fun: () -> ()
-    
-
+    let action: () -> ()
     var body: some View {
-        Text("Func Executed")
-            .onAppear {
-                fun()
-            }
+        Button("image click") {
+            action()
+        }
     }
 }
 
 
-struct FirstView: View {
-    @State var a = 0
-    @State var b = 4444
+struct ContentView: View {
+    @State var timeRemaining = -1
+    @State private var showingProgress: Bool = true
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
+        
         NavigationView {
             VStack {
-                NavigationLink(destination: SecondView(fun: self.swap)) {
-                    Text("swap link")
-                }
-                NavigationLink(destination: SecondView(fun: self.minusA)) {
-                    Text("minusA link")
+                if showingProgress {
+                    ProgressView()
+                        .onReceive(timer) { _ in
+                            if timeRemaining > 0 {
+                                timeRemaining -= 1
+                            }
+                            
+                            if timeRemaining == 0 {
+                                close()
+                            }
+                        }
                 }
                 
-                Button("plus b") { b += 1 }
-                
-                Text("\(a) \(b)")
+                NavigationLink(destination: SecondView(action: { timeRemaining = 5 })) {
+                    Text("Link")
+                }
+                    
             }
         }
+        
     }
     
-    func swap() {
-        (a, b) = (b, a)
-    }
-    
-    func minusA() {
-        a -= 1
+    func close() {
+        showingProgress = false
     }
 }
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
-        FirstView()
+        ContentView()
     }
 }
