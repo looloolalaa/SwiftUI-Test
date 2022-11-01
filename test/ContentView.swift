@@ -6,49 +6,39 @@
 
 import SwiftUI
 
-struct SecondView: View {
-    let action: () -> ()
-    var body: some View {
-        Button("image click") {
-            action()
-        }
-    }
-}
-
-
 struct ContentView: View {
-    @State var timeRemaining = -1
-    @State private var showingProgress: Bool = true
+    @State private var show: Bool = false
+    @State private var showAlert: Bool = false
+    @State var imageLoadTimeRemaining: Int = -1
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
     var body: some View {
-        
-        NavigationView {
-            VStack {
-                if showingProgress {
-                    ProgressView()
-                        .onReceive(timer) { _ in
-                            if timeRemaining > 0 {
-                                timeRemaining -= 1
-                            }
-                            
-                            if timeRemaining == 0 {
-                                close()
-                            }
-                        }
-                }
-                
-                NavigationLink(destination: SecondView(action: { timeRemaining = 5 })) {
-                    Text("Link")
-                }
-                    
+        VStack {
+            
+            if show {
+                ProgressView()
             }
+            
+            Button("toggle") {
+                withAnimation {
+                    show = true
+                }
+                imageLoadTimeRemaining = 5
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("too long time"))
+            }
+            .onReceive(timer) { _ in
+                if imageLoadTimeRemaining > 0 { imageLoadTimeRemaining -= 1 }
+                if imageLoadTimeRemaining == 0 {
+                    imageLoadTimeRemaining = -1
+                    withAnimation {
+                        show = false
+                    }
+                    showAlert = true
+                }
+            }
+            
         }
-        
-    }
-    
-    func close() {
-        showingProgress = false
     }
 }
 
