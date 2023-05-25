@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/wezen/XcodeProjects/test/SwiftUITest.xcodeproj">
    </FileRef>
 </Workspace>
