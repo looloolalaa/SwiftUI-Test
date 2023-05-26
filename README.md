@@ -17,5 +17,8 @@
 - [@State init](https://github.com/looloolalaa/SwiftUI-Test/blob/39b7d5674bb3888aa85de217d055b6acc98d2d48/test/ContentView.swift)
 - [remove navigation warning](https://github.com/looloolalaa/SwiftUI-Test/blob/851995dafbd9ed1bd738117f18b9da74fb61d400/test/ContentView.swift)
 - [init in (do {})](https://github.com/looloolalaa/SwiftUI-Test/blob/82d5f5eda62216c4666ec0361fd62adeb4da02dd/test/ContentView.swift)
+- [init should be located before 'try'](https://github.com/looloolalaa/SwiftUI-Test/blob/b2b186186d3549f40e1c214c279e66f9e329af5f/test/ContentView.swift)
+- [enum init with rawValue](https://github.com/looloolalaa/SwiftUI-Test/blob/ce8838838c5bae6e2b7b5c7cba44460f7d0f42fc/test/ContentView.swift)
+- [enum init](https://github.com/looloolalaa/SwiftUI-Test/blob/0021483a464ff302b6d7d6dd9b3ad40072632ec3/test/ContentView.swift)
 
 
