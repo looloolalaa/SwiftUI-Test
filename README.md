@@ -14,5 +14,8 @@
 - [Picker](https://github.com/looloolalaa/SwiftUI-Test/blob/c7580b3b5dcd8796d852f62717cdf753d716010c/test/ContentView.swift)
 - [enum picker](https://github.com/looloolalaa/SwiftUI-Test/blob/a5e6eef573534278af9f6a97773270ff699e8e25/test/ContentView.swift)
 - [Binding Object to ThirdView](https://github.com/looloolalaa/SwiftUI-Test/blob/7541b81447499c6f24775716a294c35b365f7281/test/ContentView.swift)
+- [@State init](https://github.com/looloolalaa/SwiftUI-Test/blob/39b7d5674bb3888aa85de217d055b6acc98d2d48/test/ContentView.swift)
+- [remove navigation warning](https://github.com/looloolalaa/SwiftUI-Test/blob/851995dafbd9ed1bd738117f18b9da74fb61d400/test/ContentView.swift)
+- [init in (do {})](https://github.com/looloolalaa/SwiftUI-Test/blob/82d5f5eda62216c4666ec0361fd62adeb4da02dd/test/ContentView.swift)
 
 
