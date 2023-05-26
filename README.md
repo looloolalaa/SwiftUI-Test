@@ -11,3 +11,8 @@
 - [several textField](https://github.com/looloolalaa/SwiftUI-Test/blob/7dfe2e05e55462eeac149bbb2fd655f0f835cc97/test/ContentView.swift)
 - [toolbar textfield focus lose problem](https://github.com/looloolalaa/SwiftUI-Test/blob/4865a5e53bd40c6827b889a50cf71a7f23727b14/test/ContentView.swift)
 - [custom back button](https://github.com/looloolalaa/SwiftUI-Test/blob/478615417e61c5a8a333cca2264b9ee0ff7a86b9/test/ContentView.swift)
+- [Picker](https://github.com/looloolalaa/SwiftUI-Test/blob/c7580b3b5dcd8796d852f62717cdf753d716010c/test/ContentView.swift)
+- [enum picker](https://github.com/looloolalaa/SwiftUI-Test/blob/a5e6eef573534278af9f6a97773270ff699e8e25/test/ContentView.swift)
+- [Binding Object to ThirdView](https://github.com/looloolalaa/SwiftUI-Test/blob/7541b81447499c6f24775716a294c35b365f7281/test/ContentView.swift)
+
+
