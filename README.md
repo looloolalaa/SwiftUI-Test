@@ -20,5 +20,9 @@
 - [init should be located before 'try'](https://github.com/looloolalaa/SwiftUI-Test/blob/b2b186186d3549f40e1c214c279e66f9e329af5f/test/ContentView.swift)
 - [enum init with rawValue](https://github.com/looloolalaa/SwiftUI-Test/blob/ce8838838c5bae6e2b7b5c7cba44460f7d0f42fc/test/ContentView.swift)
 - [enum init](https://github.com/looloolalaa/SwiftUI-Test/blob/0021483a464ff302b6d7d6dd9b3ad40072632ec3/test/ContentView.swift)
+- [error throw catch](https://github.com/looloolalaa/SwiftUI-Test/blob/9fb2cb95a5b1499d38047e27329f055b26429bf1/test/ContentView.swift)
+- [willSet observer](https://github.com/looloolalaa/SwiftUI-Test/blob/27067374f04963bdc3f7fe5d07c9c42e53857c46/test/ContentView.swift)
+- [withAnimation Sort](https://github.com/looloolalaa/SwiftUI-Test/blob/f5eeb395f022842ad36d8c89924110c4a9044983/test/ContentView.swift)
+
 
 
