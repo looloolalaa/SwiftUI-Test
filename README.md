@@ -25,6 +25,8 @@
 - [withAnimation Sort](https://github.com/looloolalaa/SwiftUI-Test/blob/f5eeb395f022842ad36d8c89924110c4a9044983/test/ContentView.swift)
 - [_state init](https://github.com/looloolalaa/SwiftUI-Test/blob/e558bb1a083476c19753014a71fb3cd814c6e302/test/ContentView.swift)
 - [state init](https://github.com/looloolalaa/SwiftUI-Test/blob/57bbcbdff09df5e0c22c3201d1fe83f0d2a8aaa8/test/ContentView.swift)
+- [Equatable override ==](https://github.com/looloolalaa/SwiftUI-Test/blob/6b9aed0800ea203edab3b59ba17202b9cd79596c/test/ContentView.swift)
+
 
 
 
