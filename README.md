@@ -24,6 +24,7 @@
 - [willSet observer](https://github.com/looloolalaa/SwiftUI-Test/blob/27067374f04963bdc3f7fe5d07c9c42e53857c46/test/ContentView.swift)
 - [withAnimation Sort](https://github.com/looloolalaa/SwiftUI-Test/blob/f5eeb395f022842ad36d8c89924110c4a9044983/test/ContentView.swift)
 - [_state init](https://github.com/looloolalaa/SwiftUI-Test/blob/e558bb1a083476c19753014a71fb3cd814c6e302/test/ContentView.swift)
+- [state init](https://github.com/looloolalaa/SwiftUI-Test/blob/57bbcbdff09df5e0c22c3201d1fe83f0d2a8aaa8/test/ContentView.swift)
 
 
 
