@@ -26,6 +26,9 @@
 - [_state init](https://github.com/looloolalaa/SwiftUI-Test/blob/e558bb1a083476c19753014a71fb3cd814c6e302/test/ContentView.swift)
 - [state init](https://github.com/looloolalaa/SwiftUI-Test/blob/57bbcbdff09df5e0c22c3201d1fe83f0d2a8aaa8/test/ContentView.swift)
 - [Equatable override ==](https://github.com/looloolalaa/SwiftUI-Test/blob/6b9aed0800ea203edab3b59ba17202b9cd79596c/test/ContentView.swift)
+- [textField show & focus](https://github.com/looloolalaa/SwiftUI-Test/blob/6d7a2faf0b5fe1abb4d48cf25b75affaec7fc607/test/ContentView.swift)
+- [Stack onTapGesture](https://github.com/looloolalaa/SwiftUI-Test/blob/08b1d5efac7a55597c6e9dc999bfd46fa6a3a525/test/ContentView.swift)
+
 
 
 
