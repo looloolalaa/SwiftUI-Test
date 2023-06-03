@@ -28,6 +28,15 @@
 - [Equatable override ==](https://github.com/looloolalaa/SwiftUI-Test/blob/6b9aed0800ea203edab3b59ba17202b9cd79596c/test/ContentView.swift)
 - [textField show & focus](https://github.com/looloolalaa/SwiftUI-Test/blob/6d7a2faf0b5fe1abb4d48cf25b75affaec7fc607/test/ContentView.swift)
 - [Stack onTapGesture](https://github.com/looloolalaa/SwiftUI-Test/blob/08b1d5efac7a55597c6e9dc999bfd46fa6a3a525/test/ContentView.swift)
+- [timer - 1 second](https://github.com/looloolalaa/SwiftUI-Test/blob/8dc906a7b2acd0748222f6ede2abcd91f2dee2f7/test/ContentView.swift)
+- [timer](https://github.com/looloolalaa/SwiftUI-Test/blob/5c56fc13fb3cd1b150b9a90f3031e7af0e0111c9/test/ContentView.swift)
+- [count down](https://github.com/looloolalaa/SwiftUI-Test/blob/f9c4245a11b057c1e230f6cb5a61e1c9d366ffcd/test/ContentView.swift)
+- [single thread test](https://github.com/looloolalaa/SwiftUI-Test/blob/435f0714ab1c7bae9a11101c922c0daef3c20f86/test/ContentView.swift)
+- [async test](https://github.com/looloolalaa/SwiftUI-Test/blob/4ddc54d2a76e0bdc2412a43844886581089d090e/test/ContentView.swift)
+- [function parameter that changes the first view](https://github.com/looloolalaa/SwiftUI-Test/blob/72bf5699a4662e851d04fda879f48eed2a688f76/test/ContentView.swift)
+- [timer - secondView](https://github.com/looloolalaa/SwiftUI-Test/blob/dab843f07cd6fd002a73e8c8fc8385ccca27ce87/test/ContentView.swift)
+- [timer & ProgressView](https://github.com/looloolalaa/SwiftUI-Test/blob/6e2b2c5dae0367d5fe83dd49d81dc9494a5eaae2/test/ContentView.swift)
+
 
 
 
